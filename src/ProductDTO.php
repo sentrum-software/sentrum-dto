@@ -53,17 +53,17 @@ class ProductDTO implements DTOInterface
     {
         $productDTO = new self();
 
-        $productDTO->id = intval($fields['id']) ?: 0;
-        $productDTO->xmlId = (string)$fields['xml_id'] ?: '';
-        $productDTO->name = (string)$fields['name'] ?: '';
-        $productDTO->oclc = (string)$fields['oclc'] ?: '';
-        $productDTO->author = (string)$fields['author'] ?: '';
-        $productDTO->type = $fields['type'] ? ProductType::getType((string)$fields['type']) : '';
-        $productDTO->language = $fields['language'] ? ProductLanguage::getLanguage((string)$fields['language']) : '';
-        $productDTO->category = $fields['category'] ? ProductCategory::getCategory((string)$fields['category']) : '';
-        $productDTO->pricePurchasing = floatval($fields['price_purchasing']) ?: 0.0;
-        $productDTO->priceBase = floatval($fields['price_base']) ?: 0.0;
-        $productDTO->weightGram = intval($fields['weight_gram']) ?: 0;
+        $productDTO->id = isset($fields['id']) ? intval($fields['id']) : 0;
+        $productDTO->xmlId = isset($fields['xml_id']) ? (string)$fields['xml_id'] : '';
+        $productDTO->name = isset($fields['name']) ? (string)$fields['name'] : '';
+        $productDTO->oclc = isset($fields['oclc']) ? (string)$fields['oclc'] : '';
+        $productDTO->author = isset($fields['author']) ? (string)$fields['author'] : '';
+        $productDTO->type = isset($fields['type']) ? ProductType::getType((string)$fields['type']) : '';
+        $productDTO->language = isset($fields['language']) ? ProductLanguage::getLanguage((string)$fields['language']) : '';
+        $productDTO->category = isset($fields['category']) ? ProductCategory::getCategory((string)$fields['category']) : '';
+        $productDTO->pricePurchasing = isset($fields['price_purchasing']) ? floatval($fields['price_purchasing']) : 0.0;
+        $productDTO->priceBase = isset($fields['price_base']) ? floatval($fields['price_base']) : 0.0;
+        $productDTO->weightGram = isset($fields['weight_gram']) ? intval($fields['weight_gram']) : 0;
 
         return $productDTO;
     }

@@ -1,0 +1,23 @@
+{
+  "id": 223,
+  "xml_id": "shipment_xml_id",
+  "order_id": 12,
+  "order_xml_id": "order_xml_id",
+  "order_account_number": "377-2",
+  "date_insert": 2312312,
+  "date_shipped": 2312333,
+  "status": "DF",
+  "shipped": true,
+  "system": false,
+  "weight_gram": 1200,
+  "delivery_price": 0.0,
+  "carrier": "UPS",
+  "invoice": "asd-121321",
+  "invoice_amount": 35.0,
+  "delivery_document_date": 123321312,
+  "comment": "some shipment comment",
+  "library": "Arlington public library",
+  "user_email": "test@test.mail",
+  "knigamir_id": "kes23",
+  "items": []
+}

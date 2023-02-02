@@ -69,33 +69,33 @@ class ShipmentDTO implements DTOInterface
     {
         $shipmentDTO = new self();
 
-        $shipmentDTO->id = intval($fields['id']) ?: 0;
-        $shipmentDTO->xmlId = (string)$fields['xml_id'] ?: '';
-        $shipmentDTO->orderId = intval($fields['order_id']) ?: 0;
-        $shipmentDTO->orderXmlId = (string)$fields['order_xml_id'] ?: '';
-        $shipmentDTO->orderAccountNumber = (string)$fields['order_account_number'] ?: '';
-        $shipmentDTO->dateInsert = intval($fields['date_insert']) ?: 0;
-        $shipmentDTO->dateShipped = intval($fields['date_shipped']) ?: 0;
-        $shipmentDTO->status = (string)$fields['status'] ?: '';
-        $shipmentDTO->shipped = boolval($fields['shipped']) ?: false;
-        $shipmentDTO->system = boolval($fields['system']) ?: false;
-        $shipmentDTO->weightGram = intval($fields['weight_gram']) ?: 0;
-        $shipmentDTO->deliveryPrice = floatval($fields['delivery_price']) ?: 0.0;
-        $shipmentDTO->carrier = (string)$fields['carrier'] ?: '';
-        $shipmentDTO->invoice = (string)$fields['invoice'] ?: '';
-        $shipmentDTO->invoiceAmount = floatval($fields['invoice_amount']) ?: 0.0;
-        $shipmentDTO->deliveryDocumentDate = intval($fields['delivery_document_date']) ?: 0;
-        $shipmentDTO->comment = (string)$fields['comment'] ?: '';
-        $shipmentDTO->library = (string)$fields['library'] ?: '';
-        $shipmentDTO->userEmail = (string)$fields['user_email'] ?: '';
-        $shipmentDTO->knigamirId = (string)$fields['knigamir_id'] ?: '';
+        $shipmentDTO->id = isset($fields['id']) ? intval($fields['id']) : 0;
+        $shipmentDTO->xmlId = isset($fields['xml_id']) ? (string)$fields['xml_id'] : '';
+        $shipmentDTO->orderId = isset($fields['order_id']) ? intval($fields['order_id']) : 0;
+        $shipmentDTO->orderXmlId = isset($fields['order_xml_id']) ? (string)$fields['order_xml_id'] : '';
+        $shipmentDTO->orderAccountNumber = isset($fields['order_account_number']) ? (string)$fields['order_account_number'] : '';
+        $shipmentDTO->dateInsert = isset($fields['date_insert']) ? intval($fields['date_insert']) : 0;
+        $shipmentDTO->dateShipped = isset($fields['date_shipped']) ? intval($fields['date_shipped']) : 0;
+        $shipmentDTO->status = isset($fields['status']) ? (string)$fields['status'] : '';
+        $shipmentDTO->shipped = isset($fields['shipped']) ? boolval($fields['shipped']) : false;
+        $shipmentDTO->system = isset($fields['system']) ? boolval($fields['system']) : false;
+        $shipmentDTO->weightGram = isset($fields['weight_gram']) ? intval($fields['weight_gram']) : 0;
+        $shipmentDTO->deliveryPrice = isset($fields['delivery_price']) ? floatval($fields['delivery_price']) : 0.0;
+        $shipmentDTO->carrier = isset($fields['carrier']) ? (string)$fields['carrier'] : '';
+        $shipmentDTO->invoice = isset($fields['invoice']) ? (string)$fields['invoice'] : '';
+        $shipmentDTO->invoiceAmount = isset($fields['invoice_amount']) ? floatval($fields['invoice_amount']) : 0.0;
+        $shipmentDTO->deliveryDocumentDate = isset($fields['delivery_document_date']) ? intval($fields['delivery_document_date']) : 0;
+        $shipmentDTO->comment = isset($fields['comment']) ? (string)$fields['comment'] : '';
+        $shipmentDTO->library = isset($fields['library']) ? (string)$fields['library'] : '';
+        $shipmentDTO->userEmail = isset($fields['user_email']) ? (string)$fields['user_email'] : '';
+        $shipmentDTO->knigamirId = isset($fields['knigamir_id']) ? (string)$fields['knigamir_id'] : '';
 
         if (
             !empty($fields['items'])
             && is_array($fields['items'])
         ) {
             foreach ($fields['items'] as $item) {
-                $shipmentDTO['items'][] = ShipmentItemDTO::fromArray($item);
+                $shipmentDTO->items[] = ShipmentItemDTO::fromArray($item);
             }
         }
 

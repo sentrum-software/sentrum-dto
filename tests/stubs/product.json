@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "xml_id": "product_xml",
+  "name": "The Universe from nothing",
+  "oclc": "123123132",
+  "author": "Lawrence Krauss",
+  "type": "book",
+  "language": "ukrainian",
+  "category": "fiction",
+  "price_purchasing": 9.2,
+  "price_base": 18.6,
+  "weight_gram": 750
+}

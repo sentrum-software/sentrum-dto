@@ -25,10 +25,10 @@ class BasketItemDTO implements DTOInterface
     {
         $basketItemDTO = new self();
 
-        $basketItemDTO->id = intval($fields['id']) ?: 0;
-        $basketItemDTO->quantity = intval($fields['quantity']) ?: 0;
-        $basketItemDTO->price = floatval($fields['price']) ?: 0.0;
-        $basketItemDTO->discount = floatval($fields['discount']) ?: 0.0;
+        $basketItemDTO->id = isset($fields['id']) ? intval($fields['id']) : 0;
+        $basketItemDTO->quantity = isset($fields['quantity']) ? intval($fields['quantity']) : 0;
+        $basketItemDTO->price = isset($fields['price']) ? floatval($fields['price']) : 0.0;
+        $basketItemDTO->discount = isset($fields['discount']) ? floatval($fields['discount']) : 0.0;
 
         if (
             empty($fields['product'])

@@ -74,21 +74,21 @@ class OrderDTO implements DTOInterface
     {
         $orderDTO = new self();
 
-        $orderDTO->id = intval($fields['id']);
-        $orderDTO->xmlId = (string)$fields['xml_id'];
-        $orderDTO->accountNumber = (string)$fields['account_number'];
-        $orderDTO->dateInsert = intval($fields['date_insert']);
-        $orderDTO->dateStatus = intval($fields['date_status']);
-        $orderDTO->status = (string)$fields['status'];
-        $orderDTO->userId = intval($fields['user_id']);
-        $orderDTO->userEmail = (string)$fields['user_email'];
-        $orderDTO->library = (string)$fields['library'];
-        $orderDTO->userComment = (string)$fields['user_comment'];
-        $orderDTO->firstOrder = boolval($fields['first_order']);
-        $orderDTO->price = floatval($fields['price']);
-        $orderDTO->discount = floatval($fields['discount']);
-        $orderDTO->purchased = boolval($fields['purchased']);
-        $orderDTO->knigamirId = (string)$fields['knigamir_id'];
+        $orderDTO->id = isset($fields['id']) ? intval($fields['id']) : 0;
+        $orderDTO->xmlId = isset($fields['xml_id']) ? (string)$fields['xml_id'] : '';
+        $orderDTO->accountNumber = isset($fields['account_number']) ? (string)$fields['account_number'] : '';
+        $orderDTO->dateInsert = isset($fields['date_insert']) ? intval($fields['date_insert']) : 0;
+        $orderDTO->dateStatus = isset($fields['date_status']) ? intval($fields['date_status']) : 0;
+        $orderDTO->status = isset($fields['status']) ? (string)$fields['status'] : '';
+        $orderDTO->userId = isset($fields['user_id']) ? intval($fields['user_id']) : 0;
+        $orderDTO->userEmail = isset($fields['user_email']) ? (string)$fields['user_email'] : '';
+        $orderDTO->library = isset($fields['library']) ? (string)$fields['library'] : '';
+        $orderDTO->userComment = isset($fields['user_comment']) ? (string)$fields['user_comment'] : '';
+        $orderDTO->firstOrder = isset($fields['first_order']) ? boolval($fields['first_order']) : false;
+        $orderDTO->price = isset($fields['price']) ? floatval($fields['price']) : 0.0;
+        $orderDTO->discount = isset($fields['discount']) ? floatval($fields['discount']) : 0.0;
+        $orderDTO->purchased = isset($fields['purchased']) ? (string)$fields['purchased'] : '';
+        $orderDTO->knigamirId = isset($fields['knigamir_id']) ? (string)$fields['knigamir_id'] : '';
 
         if (
             !empty($fields['basket'])

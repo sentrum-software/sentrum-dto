@@ -16,8 +16,8 @@ class ShipmentItemDTO implements DTOInterface
     {
         $shipmentItemDTO = new self();
 
-        $shipmentItemDTO->id = intval($fields['id']) ?: 0;
-        $shipmentItemDTO->quantity = intval($fields['quantity']) ?: 0;
+        $shipmentItemDTO->id = isset($fields['id']) ? intval($fields['id']) : 0;
+        $shipmentItemDTO->quantity = isset($fields['quantity']) ? intval($fields['quantity']) : 0;
 
         if (
             empty($fields['basket_item'])

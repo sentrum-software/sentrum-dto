@@ -1,0 +1,19 @@
+{
+  "id": 13,
+  "xml_id": "order_xml",
+  "account_number": "377-3",
+  "date_insert": 1231231,
+  "date_status": 123123132,
+  "status": "P",
+  "user_id": 733,
+  "user_email": "test@test.mail",
+  "library": "Arlington public library",
+  "user_comment": "Example of user order comment\n\"Some specific value\" in comment.",
+  "first_order": true,
+  "price": 188.29,
+  "discount": 15.20,
+  "purchased": "some purchased value",
+  "knigamir_id": "kk23nwe",
+  "basket": [],
+  "shipments": []
+}
