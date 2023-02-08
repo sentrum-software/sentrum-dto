@@ -2,6 +2,8 @@
 
 namespace SentrumDTO;
 
+use Exception;
+
 class ShipmentDTO implements DTOInterface
 {
 	public int $id = 0;
@@ -65,9 +67,18 @@ class ShipmentDTO implements DTOInterface
      */
     public array $items = [];
 
-    public static function fromArray(array $fields): DTOInterface
+    /**
+     * @param array $fields
+     * @return ShipmentDTO
+     * @throws Exception
+     */
+    public static function fromArray(array $fields): ShipmentDTO
     {
         $shipmentDTO = new self();
+
+        if (empty($fields['xml_id'])) {
+            throw new Exception('Shipment xml id not defined');
+        }
 
         $shipmentDTO->id = isset($fields['id']) ? intval($fields['id']) : 0;
         $shipmentDTO->xmlId = isset($fields['xml_id']) ? (string)$fields['xml_id'] : '';

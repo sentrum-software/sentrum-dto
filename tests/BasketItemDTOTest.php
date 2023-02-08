@@ -11,9 +11,7 @@ class BasketItemDTOTest extends TestCase
 {
     public function testSuccessTransformation(): void
     {
-        $loadedArray = json_decode(file_get_contents(__DIR__ . '/stubs/basket_item.json'), true);
-        $loadedArray['product'] = json_decode(file_get_contents(__DIR__ . '/stubs/product.json'), true);
-
+        $loadedArray = DataProvider::getBasketItem();
         $basketItemDTO = BasketItemDTO::fromArray($loadedArray);
 
         $this->assertEquals($loadedArray, $basketItemDTO->toArray());
@@ -21,7 +19,8 @@ class BasketItemDTOTest extends TestCase
 
     public function testBadTransformation(): void
     {
-        $loadedArray = json_decode(file_get_contents(__DIR__ . '/stubs/basket_item.json'), true);
+        $loadedArray = DataProvider::getBasketItem();
+        $loadedArray['product'] = [];
 
         $this->expectExceptionMessage('Product can\'t be empty');
 

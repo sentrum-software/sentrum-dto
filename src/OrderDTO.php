@@ -70,7 +70,7 @@ class OrderDTO implements DTOInterface
 	 */
 	public array $shipments = [];
 
-    public static function fromArray(array $fields): DTOInterface
+    public static function fromArray(array $fields): OrderDTO
     {
         $orderDTO = new self();
 

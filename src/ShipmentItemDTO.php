@@ -12,7 +12,7 @@ class ShipmentItemDTO implements DTOInterface
 
     public ?BasketItemDTO $basketItem = null;
 
-    public static function fromArray(array $fields): DTOInterface
+    public static function fromArray(array $fields): ShipmentItemDTO
     {
         $shipmentItemDTO = new self();
 

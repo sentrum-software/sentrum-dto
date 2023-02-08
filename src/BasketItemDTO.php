@@ -21,7 +21,7 @@ class BasketItemDTO implements DTOInterface
      * @return BasketItemDTO
      * @throws Exception
      */
-    public static function fromArray(array $fields): DTOInterface
+    public static function fromArray(array $fields): BasketItemDTO
     {
         $basketItemDTO = new self();
 

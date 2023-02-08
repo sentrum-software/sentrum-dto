@@ -17,6 +17,7 @@ interface DTOInterface
     /**
      * Convert DTO to array
      * @return array
+     * @throws Exception
      */
     public function toArray(): array;
 }

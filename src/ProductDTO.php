@@ -49,7 +49,7 @@ class ProductDTO implements DTOInterface
      * @param array $fields
      * @return ProductDTO
      */
-    public static function fromArray(array $fields): DTOInterface
+    public static function fromArray(array $fields): ProductDTO
     {
         $productDTO = new self();
 

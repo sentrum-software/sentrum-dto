@@ -11,9 +11,7 @@ class ShipmentItemDTOTest extends TestCase
 {
     public function testSuccessTransformation(): void
     {
-        $loadedArray = json_decode(file_get_contents(__DIR__ . '/stubs/shipment_item.json'), true);
-        $loadedArray['basket_item'] = json_decode(file_get_contents(__DIR__ . '/stubs/basket_item.json'), true);
-        $loadedArray['basket_item']['product'] = json_decode(file_get_contents(__DIR__ . '/stubs/product.json'), true);
+        $loadedArray = DataProvider::getShipmentItem();
 
         $shipmentItemDTO = ShipmentItemDTO::fromArray($loadedArray);
 
@@ -22,7 +20,8 @@ class ShipmentItemDTOTest extends TestCase
 
     public function testBadTransformation(): void
     {
-        $loadedArray = json_decode(file_get_contents(__DIR__ . '/stubs/shipment_item.json'), true);
+        $loadedArray = DataProvider::getShipmentItem();
+        $loadedArray['basket_item'] = '';
 
         $this->expectExceptionMessage('Basket item can\'t be empty');
 

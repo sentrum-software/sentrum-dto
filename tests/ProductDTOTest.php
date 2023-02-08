@@ -11,7 +11,7 @@ class ProductDTOTest extends TestCase
 {
     public function testTransformation(): void
     {
-        $loadedArray = json_decode(file_get_contents(__DIR__ . '/stubs/product.json'), true);
+        $loadedArray = DataProvider::getProduct();
 
         $productDTO = ProductDTO::fromArray($loadedArray);
 
