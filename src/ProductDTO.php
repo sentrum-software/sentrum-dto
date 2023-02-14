@@ -20,21 +20,21 @@ class ProductDTO implements DTOInterface
 
     /**
      * Product type.
-     * Available types described in \SentrumDTO\Enums\ProductType
+     * @see \SentrumDTO\Enums\ProductType
      * @var string $type
      */
 	public string $type = '';
 
     /**
      * Product language.
-     * Available languages described in \SentrumDTO\Enums\ProductLanguage
+     * @see \SentrumDTO\Enums\ProductLanguage
      * @var string $language
      */
 	public string $language = '';
 
     /**
      * Product category (fiction/nonfiction/kids).
-     * Available categories described in \SentrumDTO\Enums\ProductCategory
+     * @see \SentrumDTO\Enums\ProductCategory
      * @var string $category
      */
     public string $category = '';

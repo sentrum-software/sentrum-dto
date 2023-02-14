@@ -15,6 +15,7 @@ class EventDTO implements DTOInterface
 
     /**
      * Event type
+     * @see \SentrumDTO\Enums\EventType
      * @var string $type
      */
     public string $type = '';
