@@ -4,7 +4,7 @@
   "account_number": "377-3",
   "date_insert": 1231231,
   "date_status": 123123132,
-  "status": "P",
+  "status": "awaiting_for_vendor",
   "user_id": 733,
   "user_email": "test@test.mail",
   "library": "Arlington public library",

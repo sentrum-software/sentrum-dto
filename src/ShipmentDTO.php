@@ -3,6 +3,7 @@
 namespace SentrumDTO;
 
 use Exception;
+use SentrumDTO\Enums\Status;
 
 class ShipmentDTO implements DTOInterface
 {
@@ -87,7 +88,7 @@ class ShipmentDTO implements DTOInterface
         $shipmentDTO->orderAccountNumber = isset($fields['order_account_number']) ? (string)$fields['order_account_number'] : '';
         $shipmentDTO->dateInsert = isset($fields['date_insert']) ? intval($fields['date_insert']) : 0;
         $shipmentDTO->dateShipped = isset($fields['date_shipped']) ? intval($fields['date_shipped']) : 0;
-        $shipmentDTO->status = isset($fields['status']) ? (string)$fields['status'] : '';
+        $shipmentDTO->status = Status::getStatus((string)$fields['status'] ?: '');
         $shipmentDTO->shipped = isset($fields['shipped']) ? boolval($fields['shipped']) : false;
         $shipmentDTO->system = isset($fields['system']) ? boolval($fields['system']) : false;
         $shipmentDTO->weightGram = isset($fields['weight_gram']) ? intval($fields['weight_gram']) : 0;
@@ -126,7 +127,7 @@ class ShipmentDTO implements DTOInterface
             'order_account_number' => (string)$this->orderAccountNumber,
             'date_insert' => intval($this->dateInsert),
             'date_shipped' => intval($this->dateShipped),
-            'status' => (string)$this->status,
+            'status' => Status::getStatus((string)$this->status),
             'shipped' => boolval($this->shipped),
             'system' => boolval($this->system),
             'weight_gram' => intval($this->weightGram),

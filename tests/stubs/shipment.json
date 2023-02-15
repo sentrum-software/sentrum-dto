@@ -6,7 +6,7 @@
   "order_account_number": "377-2",
   "date_insert": 2312312,
   "date_shipped": 2312333,
-  "status": "DF",
+  "status": "shipment_ready",
   "shipped": true,
   "system": false,
   "weight_gram": 1200,
