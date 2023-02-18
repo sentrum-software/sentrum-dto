@@ -16,6 +16,7 @@
   "invoice_amount": 35.0,
   "delivery_document_date": 123321312,
   "comment": "some shipment comment",
+  "order_comment": "Example of user order comment\n\"Some specific value\" in comment.",
   "library": "Arlington public library",
   "user_email": "test@test.mail",
   "knigamir_id": "kes23",

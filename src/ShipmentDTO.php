@@ -57,6 +57,8 @@ class ShipmentDTO implements DTOInterface
 
 	public string $comment = '';
 
+	public string $orderComment = '';
+
 	public string $library = '';
 
 	public string $userEmail = '';
@@ -98,6 +100,7 @@ class ShipmentDTO implements DTOInterface
         $shipmentDTO->invoiceAmount = isset($fields['invoice_amount']) ? floatval($fields['invoice_amount']) : 0.0;
         $shipmentDTO->deliveryDocumentDate = isset($fields['delivery_document_date']) ? intval($fields['delivery_document_date']) : 0;
         $shipmentDTO->comment = isset($fields['comment']) ? (string)$fields['comment'] : '';
+        $shipmentDTO->orderComment = isset($fields['order_comment']) ? (string)$fields['order_comment'] : '';
         $shipmentDTO->library = isset($fields['library']) ? (string)$fields['library'] : '';
         $shipmentDTO->userEmail = isset($fields['user_email']) ? (string)$fields['user_email'] : '';
         $shipmentDTO->knigamirId = isset($fields['knigamir_id']) ? (string)$fields['knigamir_id'] : '';
@@ -137,6 +140,7 @@ class ShipmentDTO implements DTOInterface
             'invoice_amount' => floatval($this->invoiceAmount),
             'delivery_document_date' => intval($this->deliveryDocumentDate),
             'comment' => (string)$this->comment,
+            'order_comment' => (string)$this->orderComment,
             'library' => (string)$this->library,
             'user_email' => (string)$this->userEmail,
             'knigamir_id' => (string)$this->knigamirId,
