@@ -28,11 +28,7 @@ class OrderDTO implements DTOInterface
      */
     public int $dateStatus = 0;
 
-    /**
-     * Order status symbol (N, P, F, etc.)
-     * @var string $status
-     */
-	public string $status = '';
+	public ?Status $status = null;
 
 	public int $userId = 0;
 
@@ -81,7 +77,7 @@ class OrderDTO implements DTOInterface
         $orderDTO->accountNumber = isset($fields['account_number']) ? (string)$fields['account_number'] : '';
         $orderDTO->dateInsert = isset($fields['date_insert']) ? intval($fields['date_insert']) : 0;
         $orderDTO->dateStatus = isset($fields['date_status']) ? intval($fields['date_status']) : 0;
-        $orderDTO->status = Status::getStatus((string)$fields['status'] ?: '');
+        $orderDTO->status = Status::tryFrom($fields['status'] ?: '');
         $orderDTO->userId = isset($fields['user_id']) ? intval($fields['user_id']) : 0;
         $orderDTO->userEmail = isset($fields['user_email']) ? (string)$fields['user_email'] : '';
         $orderDTO->library = isset($fields['library']) ? (string)$fields['library'] : '';
@@ -116,21 +112,21 @@ class OrderDTO implements DTOInterface
     public function toArray(): array
     {
         $order = [
-            'id' => intval($this->id),
-            'xml_id' => (string)$this->xmlId,
-            'account_number' => (string)$this->accountNumber,
-            'date_insert' => intval($this->dateInsert),
-            'date_status' => intval($this->dateStatus),
-            'status' => Status::getStatus((string)$this->status),
-            'user_id' => intval($this->userId),
-            'user_email' => (string)$this->userEmail,
-            'library' => (string)$this->library,
-            'user_comment' => (string)$this->userComment,
-            'first_order' => boolval($this->firstOrder),
-            'price' => floatval($this->price),
-            'discount' => floatval($this->discount),
-            'purchased' => (string)$this->purchased,
-            'knigamir_id' => (string)$this->knigamirId,
+            'id' => $this->id,
+            'xml_id' => $this->xmlId,
+            'account_number' => $this->accountNumber,
+            'date_insert' => $this->dateInsert,
+            'date_status' => $this->dateStatus,
+            'status' => $this->status?->value,
+            'user_id' => $this->userId,
+            'user_email' => $this->userEmail,
+            'library' => $this->library,
+            'user_comment' => $this->userComment,
+            'first_order' => $this->firstOrder,
+            'price' => $this->price,
+            'discount' => $this->discount,
+            'purchased' => $this->purchased,
+            'knigamir_id' => $this->knigamirId,
             'basket' => [],
             'shipments' => []
         ];

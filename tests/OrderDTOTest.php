@@ -13,8 +13,8 @@ class OrderDTOTest extends TestCase
     {
         $loadedArray = DataProvider::getOrder();
 
-        $shipmentDTO = OrderDTO::fromArray($loadedArray);
+        $orderDto = OrderDTO::fromArray($loadedArray);
 
-        $this->assertEquals($loadedArray, $shipmentDTO->toArray());
+        $this->assertEquals($loadedArray, $orderDto->toArray());
     }
 }

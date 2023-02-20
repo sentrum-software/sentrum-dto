@@ -13,7 +13,7 @@ class EventDTOTest extends TestCase
     public function testNewOrderTransformation(): void
     {
         $loadedArray = DataProvider::getEvent();
-        $loadedArray['type'] = EventType::NEW_ORDER;
+        $loadedArray['type'] = EventType::NEW_ORDER->value;
         $loadedArray['entity'] = DataProvider::getOrder();
 
         $eventDTO = EventDTO::fromArray($loadedArray);
@@ -25,7 +25,7 @@ class EventDTOTest extends TestCase
     public function testNewShipmentTransformation(): void
     {
         $loadedArray = DataProvider::getEvent();
-        $loadedArray['type'] = EventType::NEW_SHIPMENT;
+        $loadedArray['type'] = EventType::NEW_SHIPMENT->value;
         $loadedArray['entity'] = DataProvider::getShipment();
 
         $eventDTO = EventDTO::fromArray($loadedArray);

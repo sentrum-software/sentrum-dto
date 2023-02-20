@@ -18,26 +18,11 @@ class ProductDTO implements DTOInterface
 
     public string $author = '';
 
-    /**
-     * Product type.
-     * @see \SentrumDTO\Enums\ProductType
-     * @var string $type
-     */
-	public string $type = '';
+	public ?ProductType $type = null;
 
-    /**
-     * Product language.
-     * @see \SentrumDTO\Enums\ProductLanguage
-     * @var string $language
-     */
-	public string $language = '';
+	public ?ProductLanguage $language = null;
 
-    /**
-     * Product category (fiction/nonfiction/kids).
-     * @see \SentrumDTO\Enums\ProductCategory
-     * @var string $category
-     */
-    public string $category = '';
+    public ?ProductCategory $category = null;
 
 	public float $priceBase = 0.0;
 
@@ -58,9 +43,9 @@ class ProductDTO implements DTOInterface
         $productDTO->name = isset($fields['name']) ? (string)$fields['name'] : '';
         $productDTO->oclc = isset($fields['oclc']) ? (string)$fields['oclc'] : '';
         $productDTO->author = isset($fields['author']) ? (string)$fields['author'] : '';
-        $productDTO->type = isset($fields['type']) ? ProductType::getType((string)$fields['type']) : '';
-        $productDTO->language = isset($fields['language']) ? ProductLanguage::getLanguage((string)$fields['language']) : '';
-        $productDTO->category = isset($fields['category']) ? ProductCategory::getCategory((string)$fields['category']) : '';
+        $productDTO->type = ProductType::tryFrom($fields['type'] ?: '');
+        $productDTO->language = ProductLanguage::tryFrom($fields['language'] ?: '');
+        $productDTO->category = ProductCategory::tryFrom($fields['category'] ?: '');
         $productDTO->pricePurchasing = isset($fields['price_purchasing']) ? floatval($fields['price_purchasing']) : 0.0;
         $productDTO->priceBase = isset($fields['price_base']) ? floatval($fields['price_base']) : 0.0;
         $productDTO->weightGram = isset($fields['weight_gram']) ? intval($fields['weight_gram']) : 0;
@@ -68,23 +53,20 @@ class ProductDTO implements DTOInterface
         return $productDTO;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function toArray(): array
 	{
 		return [
-			'id' => intval($this->id),
-            'xml_id' => (string)$this->xmlId,
-            'name' => (string)$this->name,
-            'oclc' => (string)$this->oclc,
-            'author' => (string)$this->author,
-            'type' => ProductType::getType((string)$this->type),
-            'language' => ProductLanguage::getLanguage((string)$this->language),
-            'category' => ProductCategory::getCategory((string)$this->category),
-            'price_purchasing' => floatval($this->pricePurchasing),
-            'price_base' => floatval($this->priceBase),
-            'weight_gram' => intval($this->weightGram)
+			'id' => $this->id,
+            'xml_id' => $this->xmlId,
+            'name' => $this->name,
+            'oclc' => $this->oclc,
+            'author' => $this->author,
+            'type' => $this->type?->value,
+            'language' => $this->language?->value,
+            'category' => $this->category?->value,
+            'price_purchasing' => $this->pricePurchasing,
+            'price_base' => $this->priceBase,
+            'weight_gram' => $this->weightGram
 		];
 	}
 }

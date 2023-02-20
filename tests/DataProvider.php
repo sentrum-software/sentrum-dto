@@ -23,19 +23,24 @@ class DataProvider
         return $shipmentItem;
     }
 
-    public static function getShipment(): array
+    public static function getShipment(bool $withOrder = true): array
     {
         $shipment = self::getJson('shipment.json');
         $shipment['items'][0] = self::getShipmentItem();
         $shipment['items'][1] = self::getShipmentItem();
+
+        if ($withOrder) {
+            $shipment['order'] = self::getJson('order.json');
+        }
+
         return $shipment;
     }
 
     public static function getOrder(): array
     {
         $order = self::getJson('order.json');
-        $order['shipments'][0] = self::getShipment();
-        $order['shipments'][1] = self::getShipment();
+        $order['shipments'][0] = self::getShipment(false);
+        $order['shipments'][1] = self::getShipment(false);
         $order['basket'][0] = self::getBasketItem();
         $order['basket'][1] = self::getBasketItem();
 

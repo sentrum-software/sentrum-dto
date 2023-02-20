@@ -7,18 +7,9 @@ use SentrumDTO\Enums\EventType;
 
 class EventDTO implements DTOInterface
 {
-    /**
-     * Event id
-     * @var int $id
-     */
     public int $id = 0;
 
-    /**
-     * Event type
-     * @see \SentrumDTO\Enums\EventType
-     * @var string $type
-     */
-    public string $type = '';
+    public ?EventType $type = null;
 
     /**
      * Event entity
@@ -40,7 +31,7 @@ class EventDTO implements DTOInterface
         }
 
         $eventDTO->id = intval($fields['id']);
-        $eventDTO->type = EventType::getType($fields['type']);
+        $eventDTO->type = EventType::from($fields['type']);
 
         if (in_array($eventDTO->type, [EventType::NEW_ORDER, EventType::UPDATE_ORDER])) {
             $eventDTO->entity = OrderDTO::fromArray($fields['entity']);
@@ -51,14 +42,11 @@ class EventDTO implements DTOInterface
         return $eventDTO;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function toArray(): array
     {
         return [
             'id' => $this->id,
-            'type' => EventType::getType($this->type),
+            'type' => $this?->type->value,
             'entity' => $this->entity->toArray()
         ];
     }

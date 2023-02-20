@@ -42,16 +42,13 @@ class BasketItemDTO implements DTOInterface
         return $basketItemDTO;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function toArray(): array
     {
         return [
-            'id' => intval($this->id),
-            'quantity' => intval($this->quantity),
-            'price' => floatval($this->price),
-            'discount' => floatval($this->discount),
+            'id' => $this->id,
+            'quantity' => $this->quantity,
+            'price' => $this->price,
+            'discount' => $this->discount,
             'product' => $this->product->toArray()
         ];
     }

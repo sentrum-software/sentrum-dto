@@ -31,14 +31,11 @@ class ShipmentItemDTO implements DTOInterface
         return $shipmentItemDTO;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function toArray(): array
     {
         return [
-            'id' => intval($this->id),
-            'quantity' => intval($this->quantity),
+            'id' => $this->id,
+            'quantity' => $this->quantity,
             'basket_item' => $this->basketItem->toArray()
         ];
     }
