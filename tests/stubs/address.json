@@ -1,0 +1,14 @@
+{
+  "id": 3,
+  "library_name": "Portland Public Library",
+  "attention_to": "John Connor",
+  "emails": [
+      "example@mail.com",
+      "example2@mail.com"
+  ],
+  "zip": "02005",
+  "country": "USA",
+  "state": "Oregon",
+  "city": "Portland",
+  "street": "Ocean view ave., 22/3"
+}

@@ -1,0 +1,10 @@
+{
+  "id": 22,
+  "xml_id": "portland-lib-xml",
+  "name": "Portland public library",
+  "short_name": "Portland public",
+  "type": "public",
+  "website": "https://portland-public.com",
+  "bill_to": {},
+  "ship_to": []
+}

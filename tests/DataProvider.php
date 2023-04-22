@@ -57,6 +57,24 @@ class DataProvider
         return self::getJson('event_result.json');
     }
 
+    public static function getAddress(): array
+    {
+        return self::getJson('address.json');
+    }
+
+    public static function getLibrary(): array
+    {
+        $library = self::getJson('library.json');
+
+        $library['bill_to'] = self::getAddress();
+        $library['ship_to'][0] = self::getAddress();
+        $library['ship_to'][0]['attention_to'] = 'Shpt1 Attention To';
+        $library['ship_to'][1] = self::getAddress();
+        $library['ship_to'][1]['attention_to'] = 'Shpt2 Attention To';
+
+        return $library;
+    }
+
     private static function getJson(string $name): array
     {
         $path = implode('/', [__DIR__, 'stubs', $name]);
