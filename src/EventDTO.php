@@ -35,8 +35,10 @@ class EventDTO implements DTOInterface
 
         if (in_array($eventDTO->type, [EventType::NEW_ORDER, EventType::UPDATE_ORDER])) {
             $eventDTO->entity = OrderDTO::fromArray($fields['entity']);
-        } else {
+        } elseif (in_array($eventDTO->type, [EventType::NEW_SHIPMENT, EventType::UPDATE_SHIPMENT])) {
             $eventDTO->entity = ShipmentDTO::fromArray($fields['entity']);
+        } elseif (in_array($eventDTO->type, [EventType::NEW_LIBRARY, EventType::UPDATE_LIBRARY])) {
+            $eventDTO->entity = LibraryDTO::fromArray($fields['entity']);
         }
 
         return $eventDTO;
