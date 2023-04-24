@@ -56,7 +56,7 @@ class LibraryDTO implements DTOInterface
             'short_name' => $this->shortName,
             'type' => $this->type->value,
             'website' => $this->website,
-            'bill_to' => $this->billTo->toArray(),
+            'bill_to' => $this->billTo ? $this->billTo->toArray() : [],
             'ship_to' => array_map(function ($shipTo) {
                 return $shipTo->toArray();
             }, $this->shipTo)
