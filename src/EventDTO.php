@@ -13,9 +13,9 @@ class EventDTO implements DTOInterface
 
     /**
      * Event entity
-     * @var OrderDTO|ShipmentDTO|null $entity
+     * @var LibraryDTO|OrderDTO|ShipmentDTO|null $entity
      */
-    public OrderDTO|ShipmentDTO|null $entity = null;
+    public LibraryDTO|OrderDTO|ShipmentDTO|null $entity = null;
 
     /**
      * @param array $fields
