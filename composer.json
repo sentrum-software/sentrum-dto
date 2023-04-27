@@ -1,6 +1,6 @@
 {
     "name": "sentrum/dto",
-    "description": "DTO for Sentrumbookstore services",
+    "description": "DTO for Sentrumbookstore website",
     "type": "library",
     "autoload": {
         "psr-4": {
